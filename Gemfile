@@ -70,5 +70,7 @@ group :test do
 end
 
 gem 'devise'
+gem 'dotenv'
 gem 'faker'
+gem 'stripe'
 gem 'table_print'
