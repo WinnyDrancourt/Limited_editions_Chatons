@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :products, path: 'chat'
-  resources :carts
+  resources :users
+  resources :products
+  resource :cart, only: %i[show destroy] do
+    post 'add/:product_id', to: 'carts#add', as: 'add_to'
+  end
 
   root to: 'index#products'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
