@@ -42,6 +42,29 @@ a {
   padding-top: 0.5em;
 }
 
+.button-primary-sm {
+  padding: 0.5em 1em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #FF989E;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.button-primary-sm:hover {
+  background-color: #A96B6B;
+  box-shadow: 0px 15px 20px rgba(159, 83, 83, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
 .button-primary {
     padding: 1em 2em;
     font-size: 12px;
@@ -137,6 +160,11 @@ a {
   .img-navbar {
     width: 30px;
     height: 30px;
+  }
+
+  .img-avatar {
+    width: 300px;
+    height: 300px;
   }
 
   ::-webkit-scrollbar {
