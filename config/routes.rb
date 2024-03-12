@@ -1,6 +1,9 @@
-Rails.application.routes.draw do  
-  devise_for :users
-  resources :users
+
+Rails.application.routes.draw do
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+  resources :users do
+    resources :avatars, only: [:create]
+  end
 
   resources :static_pages
   resources :products
