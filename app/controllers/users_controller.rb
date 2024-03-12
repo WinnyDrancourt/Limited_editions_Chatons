@@ -7,6 +7,36 @@ class UsersController < ApplicationController
     @user
   end
 
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(user_params)
+
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to user_url(@user), notice: 'User was successfully created.' }
+        format.json { render :show, status: :created, location: @user }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to user_url(@user), notice: 'User was successfully updated.' }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def edit
     @user
   end
@@ -24,8 +54,12 @@ class UsersController < ApplicationController
   end
 
   def authorize_user!
-    unless current_user == @user
-      redirect_to static_pages_home_path
-    end
+    return if current_user == @user
+
+    redirect_to static_pages_home_path
+  end
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :description, :email, :encrypted_password, :avatar)
   end
 end

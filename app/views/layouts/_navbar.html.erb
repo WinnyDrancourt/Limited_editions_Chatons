@@ -10,7 +10,12 @@
       <%= link_to "Home", products_path, class: "nav-link active" %>
       </li>
       <li class="nav-item">
-      <%= link_to "User", user_session_path, class: "nav-link active" %>
+
+      <% if user_signed_in? %>
+      <%= link_to "User", user_path(current_user), class: "nav-link active" %>
+    <% else %>
+              <%= link_to "Sign in", new_user_session_path, class: "dropdown-item" %>
+            <% end %>
       </li>
     </ul>
     <div class="col-lg-3 d-flex justify-content-end">
