@@ -1,11 +1,24 @@
-
-<% @cart.cart_products.each do |cart_product| %>
-  <%= cart_product.product.name %>
-  <img src=<%= cart_product.product.image_url %>>
-  <%= cart_product.product.price %>
-    <%= form_with(url: cart_product_path(cart_product), method: :delete) do |f| %>
-    <%= f.submit "Remove" %>
+<div class="d-flex m-2 justify-content-around">
+  <div class="container mt-5 flex-grow-1">
+    <div class="row">
+      <% @cart.cart_products.each do |cart_product| %>
+      <div class="background-secondary card-kitty m-1 d-flex flex-column ">
+        <img src=<%= cart_product.product.image_url %> class="card-img-top img-fluid rounded h-50" alt="Kitten Image">
+        <div class="m-auto">
+          <h3 class="category text-center"><%= cart_product.product.name%></h3>
+          <p class="card-text"> <%= cart_product.product.description%></p>
+          </div>
+          <div class="mt-auto pb-1 d-flex justify-content-around">
+            <p><em>Price :<%= cart_product.product.price %>€</em></p>
+            <%= form_with(url: cart_product_path(cart_product), method: :delete) do |f| %>
+              <%= f.submit "Remove" %>
+            <% end %>
+          </div>
+    </div>
     <% end %>
-<% end %>
-<p>Total : <%= @cart.total_price %></p>
-
+    </div>
+  </div>
+  <div class="background-secondary text-center mt-5 flex-grow-1 d-flex rounded">
+    <h2 class="my-auto"><em>Total : <%= @cart.total_price %></em></h2>
+  </div>
+</div>

@@ -22,6 +22,7 @@
     <%= link_to cart_path, class: "nav-link active" do %>
       <%= image_tag("28140703-chat-voyage-panier-icone-vecteur-plat-vectoriel.png", :class => "img-navbar") %>
     <% end %>
+    <%= @cart.products.count %>
   </div>
   </div>
 </div>

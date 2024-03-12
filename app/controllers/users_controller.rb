@@ -3,9 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, except: [:destroy]
   before_action :authorize_user!
 
-  def show
-    @user
-  end
+  def show; end
 
   def new
     @user = User.new
