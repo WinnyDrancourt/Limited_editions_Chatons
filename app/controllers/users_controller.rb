@@ -54,10 +54,9 @@ class UsersController < ApplicationController
   end
 
   def authorize_user!
-    return if current_user == @user
-
-    redirect_to static_pages_home_path
-  end
+    unless current_user == @user
+      redirect_to root_path
+    end
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :description, :email, :encrypted_password, :avatar)
