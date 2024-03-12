@@ -1,0 +1,7 @@
+<% @cart.cart_products.each do |card_product| %>
+  <%= card_product.product.name %>
+<img src=<%= card_product.product.image_url %>>
+<%= card_product.product.price %>
+<% end %>
+<!-- need add delete btn -->
+
