@@ -1,16 +1,39 @@
 
-<h1><%=@user.first_name%>'s profile</h1>
-<p><strong>Name:</strong> <%= @user.first_name %></p>
-<p><strong>Email:</strong> <%= @user.email %></p>
-<% if @user.avatar.attached? %>
+<main>
+
+<div class="row mx-5 container">
+<div class="card card-form row col-md-7 background-secondary">
+<div class="row">
+<div class="col-6">
+  <% if @user.avatar.attached? %>
   <%= image_tag @user.avatar %>
 <% else %>
-  <p> No Avatar avaible</p>
-<% end %>
+<%= image_tag("png-clipart-apple-icon-format-icon-person-outline-white-monochrome.png", :class => "img-avatar") %>
+  <% end %>
+</div>
+<div class="col-6">
+<h1><%=@user.first_name%>'s profile</h1>
+<p><strong>First Name:</strong> <%= @user.first_name %></p>
+<p><strong>Last Name:</strong> <%= @user.last_name %></p>
+<p><strong>Adress:</strong></p>
+<%= @user.adress %><br>
+<%= @user.zip_code %><br>
+<%= @user.town %><br>
 
+<p><strong>Email:</strong> <%= @user.email %></p>
+</div>
+</div>
+<div class="d-flex justify-content-end mb-2 ms-1">
 <% if current_user == @user %>
-  <%= link_to 'Edit Profile', edit_user_registration_path(@user) %>
-  <%= link_to 'Delete My Account', user_path(current_user), method: :delete, data: { confirm: 'Are you sure you want to delete your account?' } %>
-  <%= link_to "Sign out", destroy_user_session_path, method: :delete, data: {turbo_method: :delete} %>
+<button class=" button-primary-sm"><%= link_to 'Edit Profile', edit_user_path(@user) %></button>
+<%= button_to 'Delete My Account', user_path(current_user), method: :delete, data: { confirm: 'Are you sure you want to delete your account?' }, class: "button-primary-sm ms-1" %>
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete, data: {turbo_method: :delete}, class: "button-primary-sm ms-1" %>
 
 <% end %>
+</div>
+</div>
+</div>
+
+
+</main>
+
