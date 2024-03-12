@@ -1,16 +1,18 @@
+
 Rails.application.routes.draw do
-  root 'static_pages#home'
-  
-  devise_for :users
-  resources :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+  resources :users do
+    resources :avatars, only: [:create]
+  end
 
   resources :static_pages
   resources :products
   resource :cart, only: %i[show destroy] do
-     post 'add/:product_id', to: 'carts#add', as: 'add_to'
+    post 'add/:product_id', to: 'carts#add', as: 'add_to'
   end
+  resources :cart_products
+  root 'products#index'
 
-  root to: 'index#products'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

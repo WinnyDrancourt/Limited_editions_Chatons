@@ -16,4 +16,8 @@ class CartsController < ApplicationController
     @cart.add_product(@product)
     redirect_to cart_path
   end
+
+  def remove
+    CartProduct.find_by(id: params[:id]).destroy
+  end
 end
