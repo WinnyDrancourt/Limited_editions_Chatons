@@ -4,8 +4,8 @@
 <div class="container">
 <div class="row">
 <% @products.each do |product| %>
-  <div class="background-secondary card-kitty col-md-4">
-<img src=<%= product.image_url %> class="card-img-top img-fluid rounded-top" alt="Kitten Image">
+  <div class="background-secondary card-kitty col-md-4 m-1">
+<img src=<%= product.image_url %> class="card-img-top img-fluid rounded" alt="Kitten Image">
 <div class="card-body background-secondary">
     <h3 class="category"><%= product.name%></h3>
     <p class="card-text"> <%= product.description%></p>
