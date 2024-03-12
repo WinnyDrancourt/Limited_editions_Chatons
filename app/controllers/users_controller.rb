@@ -24,8 +24,8 @@ class UsersController < ApplicationController
   end
 
   def authorize_user!
-    return if current_user == @user
-
-    redirect_to static_pages_home_path
+    unless current_user == @user
+      redirect_to static_pages_home_path
+    end
   end
 end

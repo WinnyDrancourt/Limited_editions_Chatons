@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  root 'static_pages#home'
+  
   devise_for :users
   resources :users
+
+  resources :static_pages
   resources :products
   resource :cart, only: %i[show destroy] do
-    post 'add/:product_id', to: 'carts#add', as: 'add_to'
+     post 'add/:product_id', to: 'carts#add', as: 'add_to'
   end
 
   root to: 'index#products'
