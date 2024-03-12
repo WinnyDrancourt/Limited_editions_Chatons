@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :products, path: 'chat'
-  resources :carts
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+  resources :users do
+    resources :avatars, only: [:create]
+  end
+
+  resources :static_pages
+  resources :products
+  resource :cart, only: %i[show destroy] do
+    post 'add/:product_id', to: 'carts#add', as: 'add_to'
+  end
+  resources :cart_products
+  root 'products#index'
 
   root to: 'index#products'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
