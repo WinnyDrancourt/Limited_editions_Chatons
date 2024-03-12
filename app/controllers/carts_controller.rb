@@ -1,22 +1,23 @@
 class CartsController < ApplicationController
+  before_action :authenticate_user!, only: [:add]
   def show
-    @cart = Cart.find(params['id'])
+    @cart = current_user.cart
   end
 
-  def new
-    @cart = Cart.new
+  def destroy
+    @cart = current_user.cart
+    @cart.destroy
+    redirect_to cart_path
   end
 
-  def create
-    @cart = Cart.new(cart_params)
+  def add
+    @product = Product.find(params[:product_id])
+    @cart = current_user.cart || current_user.create_cart
+    @cart.add_product(@product)
+    redirect_to cart_path
   end
 
-  private
-
-  def cart_params
-    cart_params = params.require(:cart).permit(:user, :product)
-    cart_params[:product] = Product.find(cart_params[:product].to_i)
-    cart_params[:user] = User.find(cart_params[:user].to_i)
-    cart_params
+  def remove
+    CartProduct.find_by(id: params[:id]).destroy
   end
 end
