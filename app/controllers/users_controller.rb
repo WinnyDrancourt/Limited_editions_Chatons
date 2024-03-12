@@ -17,7 +17,6 @@ class UsersController < ApplicationController
     redirect_to root_path, notice: 'Your account has been successfully deleted.'
   end
 
-
   private
 
   def set_user

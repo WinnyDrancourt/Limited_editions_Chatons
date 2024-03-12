@@ -1,3 +1,4 @@
+
 <h1><%=@user.first_name%>'s profile</h1>
 <p><strong>Name:</strong> <%= @user.first_name %></p>
 <p><strong>Email:</strong> <%= @user.email %></p>
@@ -8,4 +9,3 @@
   <%= button_to "Sign out", destroy_user_session_path, method: :delete, data: {turbo_method: :delete} %>
 
 <% end %>
-
