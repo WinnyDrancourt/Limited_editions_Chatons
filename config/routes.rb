@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :static_pages
   resources :products
   resource :cart, only: %i[show destroy] do
-     post 'add/:product_id', to: 'carts#add', as: 'add_to'
+    post 'add/:product_id', to: 'carts#add', as: 'add_to'
   end
   resources :cart_products
   root 'products#index'
