@@ -72,6 +72,78 @@ Product.create(
   description: 'Big head Cat',
   image_url: 'https://cdn.pixabay.com/photo/2012/12/21/10/06/kitten-71514_640.jpg'
 )
+Product.create(
+  name: 'B&W Cat',
+  price: 20,
+  description: 'Two B&N cats, face to face',
+  image_url: 'https://cdn.pixabay.com/photo/2020/03/18/22/35/cats-4945658_640.png'
+)
+Product.create(
+  name: 'Baby Cat',
+  price: 10,
+  description: 'Baby cat in hand',
+  image_url: 'https://cdn.pixabay.com/photo/2012/12/21/10/06/kitten-71514_640.jpg'
+)
+Product.create(
+  name: 'Grass Cat',
+  price: 5,
+  description: 'Little cat running on Grass',
+  image_url: 'https://cdn.pixabay.com/photo/2019/08/20/21/21/cat-4419763_640.jpg'
+)
+Product.create(
+  name: 'Big head',
+  price: 12,
+  description: 'Big head Cat',
+  image_url: 'https://cdn.pixabay.com/photo/2012/12/21/10/06/kitten-71514_640.jpg'
+)
+Product.create(
+  name: 'B&W Cat',
+  price: 20,
+  description: 'Two B&N cats, face to face',
+  image_url: 'https://cdn.pixabay.com/photo/2020/03/18/22/35/cats-4945658_640.png'
+)
+Product.create(
+  name: 'Baby Cat',
+  price: 10,
+  description: 'Baby cat in hand',
+  image_url: 'https://cdn.pixabay.com/photo/2012/12/21/10/06/kitten-71514_640.jpg'
+)
+Product.create(
+  name: 'Grass Cat',
+  price: 5,
+  description: 'Little cat running on Grass',
+  image_url: 'https://cdn.pixabay.com/photo/2019/08/20/21/21/cat-4419763_640.jpg'
+)
+Product.create(
+  name: 'Big head',
+  price: 12,
+  description: 'Big head Cat',
+  image_url: 'https://cdn.pixabay.com/photo/2012/12/21/10/06/kitten-71514_640.jpg'
+)
+Product.create(
+  name: 'B&W Cat',
+  price: 20,
+  description: 'Two B&N cats, face to face',
+  image_url: 'https://cdn.pixabay.com/photo/2020/03/18/22/35/cats-4945658_640.png'
+)
+Product.create(
+  name: 'Baby Cat',
+  price: 10,
+  description: 'Baby cat in hand',
+  image_url: 'https://cdn.pixabay.com/photo/2012/12/21/10/06/kitten-71514_640.jpg'
+)
+Product.create(
+  name: 'Grass Cat',
+  price: 5,
+  description: 'Little cat running on Grass',
+  image_url: 'https://cdn.pixabay.com/photo/2019/08/20/21/21/cat-4419763_640.jpg'
+)
+Product.create(
+  name: 'Big head',
+  price: 12,
+  description: 'Big head Cat',
+  image_url: 'https://cdn.pixabay.com/photo/2012/12/21/10/06/kitten-71514_640.jpg'
+)
 
 puts 'Products create'
-## End Products creation (8) ##
+## End Products creation (20) ##

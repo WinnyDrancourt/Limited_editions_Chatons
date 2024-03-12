@@ -1,0 +1,11 @@
+<!-- show -->
+<%= @product.name %>
+<img src=<%= @product.image_url %>>
+  <%= @product.description %>
+<%= @product.price %>
+<!-- end show -->
+
+<!-- add to cart -->
+<%= form_tag add_to_cart_path(@product), method: :post do %>
+  <%= submit_tag "Add to Cart" %>
+<% end %>
