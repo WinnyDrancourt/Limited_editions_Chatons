@@ -1,7 +1,11 @@
-<% @cart.cart_products.each do |card_product| %>
-  <%= card_product.product.name %>
-<img src=<%= card_product.product.image_url %>>
-<%= card_product.product.price %>
+
+<% @cart.cart_products.each do |cart_product| %>
+  <%= cart_product.product.name %>
+  <img src=<%= cart_product.product.image_url %>>
+  <%= cart_product.product.price %>
+    <%= form_with(url: cart_product_path(cart_product), method: :delete) do |f| %>
+    <%= f.submit "Remove" %>
+    <% end %>
 <% end %>
-<!-- need add delete btn -->
+<p>Total : <%= @cart.total_price %></p>
 
