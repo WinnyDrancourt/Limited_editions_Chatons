@@ -10,8 +10,15 @@ Rails.application.routes.draw do
   resource :cart, only: %i[show destroy] do
     post 'add/:product_id', to: 'carts#add', as: 'add_to'
   end
+  resources :orders
   resources :cart_products
   root 'products#index'
+
+  scope '/order' do
+    post 'create', to: 'orders#create', as: 'create_order'
+    get 'success', to: 'orders#success', as: 'sucess_order'
+    get 'cancel', to: 'orders#cancel', as: 'cancel_order'
+end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
