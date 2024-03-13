@@ -55,6 +55,7 @@ class UsersController < ApplicationController
     unless current_user == @user
       redirect_to root_path
     end
+  end
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :description, :email, :encrypted_password, :avatar)

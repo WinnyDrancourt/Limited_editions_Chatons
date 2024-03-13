@@ -10,8 +10,9 @@
         </div>
         <div class="mb-1 d-flex justify-content-between">
           <p class="my-auto"><em>Price :<%= cart_product.product.price %>€</em></p>
-          <%= form_with(url: cart_product_path(cart_product), method: :delete) do |f| %>
-            <%= f.submit "Remove", class:"button-primary" %>
+          <%= form_with(url: cart_product_path(cart_product), method: :delete, data: {turbo_method: :delete}) do |f| %>
+            <%= button_to "Remove", cart_product_path(cart_product), method: :delete, class: "button-primary", "turbo_method": :delete %>
+
           <% end %>
         </div>
       </div>

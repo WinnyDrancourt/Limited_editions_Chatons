@@ -1,5 +1,5 @@
 class CartProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:add]
+  before_action :authenticate_user!, only: [:destroy]
   def destroy
     @cart_product = CartProduct.find(params[:id])
     @cart_product.destroy
