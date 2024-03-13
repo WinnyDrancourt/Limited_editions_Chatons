@@ -69,6 +69,7 @@ group :test do
   gem 'selenium-webdriver'
 end
 
+gem 'aws-sdk-s3', require: false
 gem 'devise'
 gem 'dotenv'
 gem 'faker'
