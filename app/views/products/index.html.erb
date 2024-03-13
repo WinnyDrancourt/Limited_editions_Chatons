@@ -4,15 +4,18 @@
 <div class="container">
 <div class="row">
 <% @products.each do |product| %>
-  <div class="background-secondary card-kitty col-md-4 m-1">
-<img src=<%= product.image_url %> class="card-img-top img-fluid rounded" alt="Kitten Image">
-<div class="card-body background-secondary">
-    <h3 class="category"><%= product.name%></h3>
-    <p class="card-text"> <%= product.description%></p>
-    <div class="d-flex justify-content-end align-items-end">
+  <div class="background-secondary card-kitty m-1 d-flex flex-column ">
+    <img src=<%= product.image_url %> class="card-img-top img-fluid rounded h-50" alt="Kitten Image">
+    <div class="m-auto">
+      <h3 class="category text-center"><%= product.name%></h3>
+      <!--<p class="card-text"> <%= product.description%></p>-->
+      </div>
+      <div class="mt-auto pb-1 d-flex justify-content-around">
         <button class=" button-primary">  <%= link_to "Show", product_path(product.id)%></button>
-    </div>
-</div>
+        <%= form_tag add_to_cart_path(product.id), method: :post do %>
+          <%= submit_tag "Add to Cart", class:"button-primary" %>
+        <% end %>
+      </div>
 </div>
 <% end %>
 </div>
