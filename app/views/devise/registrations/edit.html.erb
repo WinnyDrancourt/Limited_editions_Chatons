@@ -57,11 +57,11 @@
 
       <div class="field">
         <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-        <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control text-center", placeholder: "Enter Email"  %>
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control text-center", placeholder: "Enter current password"  %>
       </div>
 
       <div class="d-flex justify-content-around my-2">
-          <%= link_to "Back", :back , class: "button-primary" %>
+          <%= link_to "Back", :back , class: "button-primary text-decoration-none" %>
         <div class="actions">
           <%= f.submit "Update", class: "button-primary"  %>
         </div>
