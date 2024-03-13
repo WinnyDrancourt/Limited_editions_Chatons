@@ -1,29 +1,49 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top background-primary text-white">
-<div class="container-fluid">
-<%= link_to "Projet Chatons", products_path, class: "nav-link active text-white" %>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarCollapse">
-    <ul class="navbar-nav me-auto mb-2 mb-md-0">
-      <li class="nav-item">
-      <%= link_to "Home", products_path, class: "nav-link active" %>
-      </li>
-      <li class="nav-item">
-
-      <% if user_signed_in? %>
-      <%= link_to "User", user_path(current_user), class: "nav-link active" %>
-    <% else %>
-              <%= link_to "Sign in", new_user_session_path, class: "dropdown-item" %>
-            <% end %>
-      </li>
-    </ul>
-    <div class="col-lg-3 d-flex justify-content-end">
-    <%= link_to cart_path, class: "nav-link active" do %>
-      <%= image_tag("28140703-chat-voyage-panier-icone-vecteur-plat-vectoriel.png", :class => "img-navbar") %>
-    <% end %>
-    <%= @cart.products.count %>
+  <div class="container-fluid">
+    <%= link_to "Projet Chatons", products_path, class: "nav-link active text-white" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <%= link_to "Home", products_path, class: "nav-link active" %>
+        </li>
+          <% if user_signed_in? %>
+            <li class="nav-item dropend">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Profile/Logout
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li>
+                  <%= link_to "Profile", user_path(current_user), class: "dropdown-item text-black" %>
+                </li>
+                <li>
+                  <%= button_to "Sign out", destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item" %>
+                </li>
+              </ul>
+            </li>
+          <% else %>
+            <li class="nav-item dropend justify-content-end">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Login/Signup
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><%= link_to "Sign in", new_user_session_path, class: "dropdown-item text-black" %></li>
+                <li>
+                  <%= link_to "Sign up", new_user_registration_path, class: "dropdown-item text-black" %>
+                </li>
+              </ul>
+            </li>
+          <% end %>
+      </ul>
+      <div class="col-lg-3 d-flex justify-content-end">
+        <%= link_to cart_path, class: "nav-link active me-2" do %>
+          <%= image_tag("28140703-chat-voyage-panier-icone-vecteur-plat-vectoriel.png", :class => "img-navbar") %>
+        <% end %>
+        <%= @cart.products.count %>
+      </div>
+    </div>
   </div>
-  </div>
-</div>
 </nav>
+

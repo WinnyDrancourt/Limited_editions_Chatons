@@ -5,7 +5,7 @@
 <div class="row">
 <% @products.each do |product| %>
   <div class="background-secondary card-kitty m-1 d-flex flex-column ">
-    <img src=<%= product.image_url %> class="card-img-top img-fluid rounded h-50" alt="Kitten Image">
+    <img src=<%= product.image_url %> class="card-img-top img-fluid rounded" alt="Kitten Image">
     <div class="m-auto">
       <h3 class="category text-center"><%= product.name%></h3>
       <!--<p class="card-text"> <%= product.description%></p>-->
