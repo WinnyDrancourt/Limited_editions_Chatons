@@ -6,6 +6,9 @@ a {
   color: #fff !important;
 }
 
+@media only screen and (max-width: 768px) { #center-sm {
+  justify-content: center !important;
+}}
 
 .background-primary {
     background-color: #A96B6B;
@@ -32,6 +35,7 @@ a {
   width: 300px !important;
   /* max-width: 300px !important; */
   padding-top: 0.5em;
+
 }
 
 .card-form {

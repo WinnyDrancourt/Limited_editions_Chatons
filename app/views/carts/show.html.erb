@@ -1,9 +1,9 @@
 <main class="mx-4">
   <div class="row">
     <div class="container col-md-10">
-      <div class="row">
+      <div class="row" id="center-sm">
         <% @cart.cart_products.each do |cart_product| %>
-          <div class="background-secondary card-kitty m-1 d-flex flex-column">
+          <div class="background-secondary card-kitty m-1 flex-column">
             <img src=<%= cart_product.product.image_url %> class="card-image img-fluid rounded" alt="Kitten Image">
             <div class="m-auto">
               <h3 class="category text-center"><%= cart_product.product.name %></h3>
