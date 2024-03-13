@@ -2,7 +2,7 @@
 <main>
 <%= render "layouts/jumbotron" %>
 <div class="container">
-<div class="row">
+<div class="row" id="center-sm">
 <% @products.each do |product| %>
   <div class="background-secondary card-kitty m-1 d-flex flex-column ">
     <img src=<%= product.image_url %> class="card-img-top img-fluid rounded" alt="Kitten Image">
