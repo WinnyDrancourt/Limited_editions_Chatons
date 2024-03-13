@@ -1,33 +1,31 @@
-
-<main class=" mx-4">
-<div class="row">
-<div class="container col-10">
-<div class="row">
-<% @cart.cart_products.each do |cart_product| %>
-  <div class="background-secondary card-kitty m-1 d-flex flex-column ">
-  <img src=<%= cart_product.product.image_url %> class="card-image img-fluid rounded" alt="Kitten Image">
-    <div class="m-auto">
-    <h3 class="category text-center"><%= cart_product.product.name%></h3>
-    <p class="card-text"><%= cart_product.product.description%></p>
-
+<main class="mx-4">
+  <div class="row">
+    <div class="container col-md-10">
+      <div class="row">
+        <% @cart.cart_products.each do |cart_product| %>
+          <div class="background-secondary card-kitty m-1 d-flex flex-column">
+            <img src=<%= cart_product.product.image_url %> class="card-image img-fluid rounded" alt="Kitten Image">
+            <div class="m-auto">
+              <h3 class="category text-center"><%= cart_product.product.name %></h3>
+              <p class="card-text"><%= cart_product.product.description %></p>
+            </div>
+            <div class="mt-auto pb-1 d-flex justify-content-around">
+              <p class="my-auto"><em>Price: <%= cart_product.product.price %>&euro;</em></p>
+              <%= form_with(url: cart_product_path(cart_product), method: :delete, data: { confirm: 'Are you sure?' }) do |f| %>
+                <%= f.submit "Remove", class:"button-primary" %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
       </div>
-      <div class="mt-auto pb-1 d-flex justify-content-around">
-      <p class="my-auto"><em>Price: <%= cart_product.product.price %>€</em></p>
-      <%= form_with(url: cart_product_path(cart_product), method: :delete, data: { confirm: 'Are you sure?' }) do |f| %>
-        <%= f.submit "Remove", class:"button-primary" %>
-      <% end %>
+    </div>
+    <div class="container col-md-2 col-12">
+      <div class="background-secondary text-center mt-5 p-4 justify-content-center align-items-center d-flex rounded">
+        <div class="m-auto">
+          <h2 class="m-auto"><em>Total : <%= @cart.total_price %>&euro;</em></h2>
+          <%= button_to "Order now !", create_order_path(total: @cart.total_price, cart_id: @cart.id), class: "button-primary mt-5", data: {turbo: false} %>
+        </div>
       </div>
-</div>
-<% end %>
-</div>
-</div>
-<div class="container col-2">
-<div class="background-secondary text-center mt-5 p-5 d-flex rounded">
-<div class="m-auto">
-  <h2 class="m-auto"><em>Total : <%= @cart.total_price %></em></h2>
-  <%= button_to "Passer commande (NEXT GEN)", create_order_path(total: @cart.total_price, cart_id: @cart.id), class: "btn btn-primary", data: {turbo: false} %>
-</div>
-</div>
-</div>
-</div>
+    </div>
+  </div>
 </main>
