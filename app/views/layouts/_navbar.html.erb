@@ -40,8 +40,8 @@
       <div class="col-lg-3 d-flex justify-content-end">
         <%= link_to cart_path, class: "nav-link active me-2" do %>
           <%= image_tag("28140703-chat-voyage-panier-icone-vecteur-plat-vectoriel.png", :class => "img-navbar") %>
+              <span id="cart-count"><%= @cart.products.count %></span>
         <% end %>
-        <%= @cart.products.count %>
       </div>
     </div>
   </div>
