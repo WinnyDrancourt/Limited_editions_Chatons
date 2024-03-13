@@ -25,9 +25,7 @@
 <div class="background-secondary text-center mt-5 p-5 d-flex rounded">
 <div class="m-auto">
   <h2 class="m-auto"><em>Total : <%= @cart.total_price %></em></h2>
-  <!--<%# form_with(url: , ) do |f| %>
-      <%# f.submit "Confirm" %>
-    <%#end %>-->
+  <%= button_to "Passer commande (NEXT GEN)", create_order_path(total: @cart.total_price, cart_id: @cart.id), class: "btn btn-primary", data: {turbo: false} %>
 </div>
 </div>
 </div>

@@ -5,6 +5,7 @@ class Product < ApplicationRecord
   validates :image_url, presence: true
   has_many :cart_products
   has_many :carts, through: :cart_products
+  has_many :order_products
 
   has_one_attached :product_image
 end
