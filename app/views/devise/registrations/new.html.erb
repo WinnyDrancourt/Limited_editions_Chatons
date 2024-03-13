@@ -41,6 +41,7 @@
 
       <div class="actions d-flex justify-content-center">
         <%= f.submit "Sign up", class: "button-primary" %>
+        <%= f.hidden_field :create_cart, value: true %>
       </div>
     <% end %>
   </div>
