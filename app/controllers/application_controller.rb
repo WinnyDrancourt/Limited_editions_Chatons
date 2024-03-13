@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
   private
 
   def set_cart
-    @cart = current_user.cart
+    @cart = if current_user
+              current_user.cart
+            else
+              Cart.new
+            end
   end
 end
