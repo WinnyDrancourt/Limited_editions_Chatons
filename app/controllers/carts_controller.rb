@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
-  before_action :authenticate_user!, only: [:add]
-  def show; end
+  before_action :authenticate_user!
+  def show
+  end
 
   def destroy
     @cart.destroy
@@ -12,4 +13,10 @@ class CartsController < ApplicationController
     @cart = current_user.cart || current_user.create_cart
     @cart.add_product(@product)
   end
+
+  def count
+    count = current_user.cart.products.count
+    render json: { count: count }
+  end
+
 end
