@@ -75,3 +75,5 @@ gem 'dotenv'
 gem 'faker'
 gem 'stripe'
 gem 'table_print'
+
+gem "dockerfile-rails", ">= 1.6", :group => :development
