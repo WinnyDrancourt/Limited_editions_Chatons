@@ -17,4 +17,32 @@
   <%= render "layouts/navbar"%>
     <%= yield %>
   </body>
+
+  <footer class="d-flex flex-wrap justify-content-between align-items-end py-3 mt-4 background-tertiary">
+  <div class="nav col-md-3 justify-content-center align-items-center h-100">
+  <a href="https://github.com/WinnyDrancourt/Limited_editions_Chatons">
+  <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rect width="50" height="50" fill="url(#pattern0)"/>
+  <defs>
+  <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+  <use xlink:href="#image0_18_311" transform="scale(0.01)"/>
+  </pattern>
+  <image id="image0_18_311" width="100" height="100" xlink:href="data:image/png;base64,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"/>
+  </defs>
+  </svg>
+  </a>
+  
+  </div>
+
+
+    <ul class="nav col-md-6 justify-content-start">
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+    </ul>
+  </footer>
+
 </html>
+
