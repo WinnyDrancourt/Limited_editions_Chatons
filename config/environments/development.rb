@@ -2,6 +2,15 @@ require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  ActionMailer::Base.smtp_settings = {
+    user_name: ENV['MAILJET_LOGIN'],
+    password: ENV['MAILJET_PWD'],
+    domain: 'monsite.fr',
+    address: 'in-v3.mailjet.com',
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
 
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development
@@ -34,7 +43,7 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  config.active_storage.service = :amazon
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false

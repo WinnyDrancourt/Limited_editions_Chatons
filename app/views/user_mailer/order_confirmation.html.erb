@@ -1,7 +1,3 @@
 <h1> Hi <%= @user.first_name %> </h1>
 <p> Thanks again for your purchase ! On our shop</p>
-<h2> Find your picture here :</h2>
-<% @cart.product.each do |product| %>
-  <img src="<%= product.image_url %>" alt="">
-<% end %>
 <p> See you soon ! </p>
