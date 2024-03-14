@@ -44,9 +44,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_13_141655) do
 
   create_table "cart_products", force: :cascade do |t|
     t.bigint "cart_id"
-    t.bigint "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "product_id"
     t.index ["cart_id"], name: "index_cart_products_on_cart_id"
     t.index ["product_id"], name: "index_cart_products_on_product_id"
   end
@@ -78,10 +78,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_13_141655) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.float "price"
-    t.text "description"
-    t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_url"
+    t.text "description"
   end
 
   create_table "users", force: :cascade do |t|
@@ -104,6 +104,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_13_141655) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cart_products", "carts"
+  add_foreign_key "cart_products", "products"
   add_foreign_key "carts", "users"
   add_foreign_key "order_products", "orders"
   add_foreign_key "order_products", "products"
