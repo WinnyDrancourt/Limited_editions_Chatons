@@ -41,12 +41,50 @@ a {
   padding-top: 0.5em;
 }
 
+.card-order {
+  border-radius: 30px 0;
+  background-color: #D9D9D9 !important;
+  color: #fff !important;
+  /* max-width: 300px !important; */
+  padding-top: 0.5em;
+  height: fit-content;
+  border: solid 2px #ff989e;
+}
+
+.img-order {
+  border-radius: 5px;
+  height: 60px;
+  width: auto;
+}
+
+.box-miniature {
+  border-radius: 10px;
+  background-color: #ffc5c5 !important;
+  height: 70px;
+  min-width: 100px;
+  width: auto;
+  border: solid 1px #ff989e;
+}
+
+.border-pink {
+  border: solid 5px #ff989e;
+  border-radius: 20px 0;
+  background-color: #ff989e;
+  width: fit-content;
+  padding: 0 7px;
+}
+
+.text-pink-color {
+  color:#ff989e;
+}
+
 .card-form {
   border-radius: 10px;
   background-color: #ffc5c5 !important;
   color: #fff !important;
   /* max-width: 300px !important; */
   padding-top: 0.5em;
+  height: fit-content;
 }
 
 .button-primary-sm {
