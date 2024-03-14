@@ -22,6 +22,12 @@ a {
   background-color: #ffc5c5;
 }
 
+.background-tertiary {
+  background-image: url(assets/pngfind.com-singapore-airlines-logo-png-3473388);
+
+  height: 350px;
+}
+
 .border-radius-primary {
   border-radius: 45px;
 }
