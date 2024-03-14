@@ -1,16 +1,16 @@
-
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
-  resources :users do
+  resources :users, path: 'mon_profil' do
     resources :avatars, only: [:create]
   end
 
+
   resources :static_pages
-  resources :products
-  resource :cart, only: %i[show destroy] do
+  resources :products, path:'home'
+  resource :cart, only: %i[show destroy], path: 'panier' do
     post 'add/:product_id', to: 'carts#add', as: 'add_to'
   end
-  resources :orders
+  resources :orders, path: 'ma commande'
   resources :cart_products
   root 'products#index'
 
@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     get 'success', to: 'orders#success', as: 'sucess_order'
     get 'cancel', to: 'orders#cancel', as: 'cancel_order'
 end
+
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
