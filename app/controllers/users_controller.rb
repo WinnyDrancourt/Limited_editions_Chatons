@@ -3,7 +3,14 @@ class UsersController < ApplicationController
   before_action :set_user, except: [:destroy]
   before_action :authorize_user!
 
-  def show; end
+  def show
+    array = Order.where(user_id: current_user.id).ids
+    @order = []
+    array.each do |oids|
+      order = OrderProduct.where(order_id: oids)
+      @order.push(order)
+    end
+  end
 
   def new
     @user = User.new

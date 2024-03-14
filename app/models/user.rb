@@ -4,9 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one :cart
+  has_many :orders
+  has_one_attached :avatar
+
   def create_cart
     self.create_cart!
   end
-
-  has_one_attached :avatar
 end
