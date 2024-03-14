@@ -1,19 +1,15 @@
 class OrdersController < ApplicationController
-
   before_action :authenticate_user!
 
-  def show 
+  def show
     @order = Order.find(params[:id])
   end
 
   def index
-
-    my_order()
-
+    my_order
   end
 
   def create
-
     @total = params[:total].to_d
     @cart_id = params[:cart_id]
     @session = Stripe::Checkout::Session.create(
@@ -22,27 +18,28 @@ class OrdersController < ApplicationController
         {
           price_data: {
             currency: 'eur',
-            unit_amount: (@total*100).to_i,
+            unit_amount: (@total * 100).to_i,
             product_data: {
-              name: 'Rails Stripe Checkout',
-            },
+              name: 'Rails Stripe Checkout'
+            }
           },
           quantity: 1
-        },
+        }
       ],
       metadata: {
         cart_id: @cart_id
       },
       mode: 'payment',
-      success_url: sucess_order_url + '?session_id={ORDERS_SESSION_ID}',
+      success_url: sucess_order_url + '?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: cancel_order_url
     )
     redirect_to @session.url, allow_other_host: true
 
-  
-      flash[:notice] = "commande effectuée"
+    order_creation
+    order_product
+    cart_product_destroy
 
-    end
+    flash[:notice] = 'commande effectuée'
   end
 
   def success
@@ -51,9 +48,7 @@ class OrdersController < ApplicationController
     @cart_id = @session.metadata.cart_id
   end
 
-  def cancel
-    
-  end
+  def cancel; end
 
   def destroy
     @order = Order.find(params[:id])
@@ -61,52 +56,19 @@ class OrdersController < ApplicationController
     redirect_to root_path
   end
 
-  def edit
-    @order = Order.find(params[:id])
+  private
+
+  def order_creation
+    @order = Order.create!(user_id: current_user.id, stripe_customer_id: @session.id)
   end
 
-  def update
-    @order = Order.find(params[:id])
-  end
-
-  def new
-    @order = Order.new
-  end
-
-private
-
-  def total 
-    @total = 0
-    @order.order_products.each do |product|
-      @total = @total + (product.product.price * product.quantity)
+  def order_product
+    @cart.products.each do |product|
+      OrderProduct.create!(order_id: @order.id, product_id: product.id)
     end
-
-    @order.update(total: @total)
   end
 
-  def my_order
-    @orders = []
-    Order.all.each do |order|
-      if order.user_id == current_user.id
-        @orders << order
-      end
+  def cart_product_destroy
+    @cart.products.delete_all
   end
-
-  def joinproduct
-
-  @cart = Cart.find_by(user_id: current_user.id)
-
-  @cart.cart_products.each do |product|
-    item = CartProduct.new(
-      'product_id' => product.product_id,
-      'quantity' => product.quantity,
-      'order_id' => @order.id
-    )
-    if item.save
-      puts "save"
-      end
-   end
-  end
-
 end
-
